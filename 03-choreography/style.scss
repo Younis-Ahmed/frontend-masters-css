@@ -39,14 +39,16 @@ body {
   > .ui-input,
   > .ui-button {
     // Add animations here
+    animation: slide-up 1s both;
+    animation-delay: calc(var(--animation-duration) * var(--i) );
   }
 
-  > .ui-input {
-    // ...
-  }
-  > .ui-button {
-    // ...
-  }
+  // > .ui-input {
+  //   // ...
+  // }
+  // > .ui-button {
+  //   // ...
+  // }
 }
 
 .ui-input {

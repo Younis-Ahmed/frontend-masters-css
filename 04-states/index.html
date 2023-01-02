@@ -19,7 +19,20 @@
     </form>
   </body>
   <script>
-    const form = document.querySelector('.ui-form');
+    const formEl = document.querySelector('.ui-form');
+    function setState(state) {
+      formEl.dataset.state = state;
+      if(state === 'subscribing'){
+        let rand = Math.random();
+        setTimeout(() => {
+          if( rand < 0.5){
+            setState('error')
+          }else{
+            setState('success')
+          }
+        }, 1000, console.log(rand))
+      }
+    }
 
     // ...
   </script>

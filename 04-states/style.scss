@@ -36,14 +36,19 @@ body {
 
   &[data-state='subscribe'] {
     // Add an animation here
+    animation: slide-up 1s      both;
   }
 
   &[data-state='success'] {
     // Change the color and/or add an animation here
+    --color: rgb(118, 234, 118);
+
   }
 
   &[data-state='error'] {
     // Change the color and/or add an animation here
+    --color: red;
+    animation: shake 0.5s     both;
   }
 
   > .ui-input,

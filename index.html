@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.scss" />
   </head>
   <body>
-    <div id="app">
+    <div id="app" >
       <small>Frontend Masters</small>
       <h1>CSS Animation Workshop</h1>
       <ul>
@@ -27,7 +27,40 @@
         <li><a href="/06-reactive/">Reactive Animations</a></li>
         <li><a href="/examples/inflight/">Inflight Example</a></li>
       </ul>
-      <div class="ball"></div>
+
+      <!-- <div class="container">
+          <div class="ball" style="--i: 1"></div>
+          <div class="ball" style="--i: 2"></div>
+          <div class="ball" style="--i: 3"></div>
+        </div> -->
+        <button class="button">Click Me</button>
     </div>
   </body>
+  <script>
+    const appel = document.querySelector('#app');
+    const buttonel = document.querySelector('.button');
+
+    const machine = {
+      initial: 'loading',
+      states: {
+        start: {
+          on: {CLICK: 'loading'}
+        },
+        loading: {
+          on: {CLICK: 'success'}
+        },
+        success: {
+          on: {CLICK: 'loading'}
+        },
+      },
+    };
+
+    buttonel.addEventListener('click' , () => {
+      const currentState = appel.dataset.state ?? machine.initial;
+      const nextState = machine.states[currentState]
+      .on['CLICK'] ?? currentState;
+
+      appel.dataset.state = nextState;
+    });
+  </script>
 </html>

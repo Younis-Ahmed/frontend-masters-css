@@ -5,6 +5,18 @@ body {
   padding: 5vmin;
   background-color: #f4f4f4;
 }
+#app {
+  --bg: white;
+
+  &[data-state='loading'] {
+    --bg: orange;
+    background-color: var(--bg);
+  }
+  &[data-state='success'] {
+    --bg: rgb(196, 27, 196);
+    background-color: var(--bg);
+  }
+}
 
 a {
   color: blue;
@@ -12,6 +24,7 @@ a {
 
 h1 {
   margin: 0;
+
 }
 
 small {
@@ -28,4 +41,45 @@ ul {
   width: 5vmin;
   border-radius: 50%;
   background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+
+  --duration: 1s;
+  --stagger: 0.5s;
+  --interval: calc(var(--duration) - var(--stagger));
+
+  animation: move-right var(--duration) calc(var(--interval) * var(--i)) both;
+  
+  // &:nth-child(2){
+  //   animation-delay: calc(var(--duration) - var(--stagger));
+  // }
+  // &:nth-child(3){
+  //   animation-delay: calc(var(--duration) * 2 - var(--stagger) * 2);
+  // }
+
+  @keyframes move-right {
+    from {
+      transform: none;
+    }
+    to {
+      transform: translateX(15vw);
+    }
+  }
+  
+}
+.button {
+  appearance: none;
+  background: blue;
+  color: white;
+  font-weight: bold;
+  padding: 2rem;
+  border: nones;
+  transition: all 0.3s;
+  
+  &:hover {
+    opacity: 0.8;
+
+  }
+  &:active{
+    transform: translateY(10%);
+    opacity: 1;
+  }
 }
